@@ -3,7 +3,7 @@
 Production site for West Ontario Paving (built and maintained by IT Rapid Support).
 
 - Framework: Astro (static output in `dist/`).
-- Hosting: Cloudflare Pages project `westontariopaving`, connected to this repo. Every push to `main` builds and deploys to production; other branches get preview URLs.
+- Hosting: Cloudflare Pages project `westontariopaving` (https://westontariopaving.pages.dev). Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and deploys `dist/` + `functions/` with wrangler (repo secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`).
 - Build: `npm run build`, output directory `dist`, Node 24 (`.node-version`).
 - Quote form: `functions/quote.php.js` is a Pages Function that handles `POST /quote.php` (field names, honeypot and validation match the old HostPapa `quote.php`). It sends each request to office@westontariopaving.com through Microsoft Graph with Reply-To set to the customer.
   Encrypted Pages secrets (production + preview): `GRAPH_TENANT_ID`, `GRAPH_CLIENT_ID`, `GRAPH_CLIENT_SECRET`. No secrets live in this repo.
