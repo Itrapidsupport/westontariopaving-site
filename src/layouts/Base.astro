@@ -1,0 +1,154 @@
+---
+import logoSvg from '../assets/logo.svg?raw';
+import logoWhite from '../assets/logo-white.svg?raw';
+import '@fontsource-variable/inter-tight';
+import interUrl from '@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url';
+import '../styles/site.css';
+import { biz, tollFree, areas } from '../data/site.js';
+import Pic from '../components/Pic.astro';
+interface Props { title: string; description: string; path?: string; ld?: object[]; preload?: string; preloadSizes?: string; cta?: string }
+const { title, description, path = '', ld = [], preload, preloadSizes = '(min-width: 900px) 45vw, 100vw', cta = 'trucks2' } = Astro.props;
+import meta from '../data/images.json';
+const pm = preload ? (meta as any)[preload] : null;
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (p: string) => `${b}/${p}`.replace(/\/+$/, '/') ;
+const canonical = new URL(`${b}/${path}`, Astro.site).href;
+const og = new URL(`${b}/og.jpg`, Astro.site).href;
+const org = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
+  '@id': new URL(`${b}/#business`, Astro.site).href,
+  name: biz.name,
+  legalName: biz.legal,
+  url: new URL(`${b}/`, Astro.site).href,
+  logo: new URL(`${b}/logo.svg`, Astro.site).href,
+  image: og,
+  email: biz.email,
+  telephone: biz.phones[0].tel,
+  foundingDate: biz.founded,
+  description: 'Family-owned residential and commercial paving contractor: asphalt, concrete, interlock and paving repairs across the GTA, Simcoe County and Georgian Bay.',
+  address: { '@type': 'PostalAddress', streetAddress: biz.street, addressLocality: biz.city, addressRegion: 'Ontario', postalCode: biz.postal, addressCountry: 'CA' },
+  contactPoint: biz.phones.map((p) => ({ '@type': 'ContactPoint', telephone: p.tel, contactType: p.label === 'Toll free' ? 'sales' : 'customer service', areaServed: 'CA-ON' })),
+  areaServed: [...areas.gta, ...areas.simcoe].map((n) => ({ '@type': 'City', name: n })),
+  sameAs: [biz.facebook, biz.instagram],
+};
+const nav = [
+  ['Residential', 'residential-asphalt-paving/'],
+  ['Commercial', 'commercial-asphalt-paving/'],
+  ['Our work', 'gallery/'],
+];
+const set = (k: string, ws: number[], ext: string) => ws.map((w: number) => `${b}/img/${k}-${w}.${ext} ${w}w`).join(', ');
+const phoneIco = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>';
+---
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <meta name="color-scheme" content="light" />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#231F20" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:site_name" content={biz.name} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="West Ontario Paving crew laying fresh asphalt, with the West Ontario Paving logo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  {pm && <link rel="preload" as="image" type="image/avif" media="(max-resolution: 1.49dppx)" fetchpriority="high" imagesrcset={set(preload!, pm.ws.filter((w: number) => w <= 2800), 'avif')} imagesizes={preloadSizes} />}
+  {pm && <link rel="preload" as="image" type="image/webp" media="(min-resolution: 1.5dppx)" fetchpriority="high" imagesrcset={set(preload!, pm.ws, 'webp')} imagesizes={preloadSizes} />}
+  <link rel="preload" href={`${b}/fonts/GeneralSans-Semibold.woff2`} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={`${b}/fonts/GeneralSans-Medium.woff2`} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={interUrl} as="font" type="font/woff2" crossorigin />
+  <style is:inline set:html={`@font-face{font-family:'General Sans';src:url(${b}/fonts/GeneralSans-Medium.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:'General Sans';src:url(${b}/fonts/GeneralSans-Semibold.woff2) format('woff2');font-weight:600;font-style:normal;font-display:swap}`} />
+  <link rel="icon" href={`${b}/favicon-32.png`} sizes="32x32" type="image/png" />
+  <link rel="icon" href={`${b}/favicon-192.png`} sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href={`${b}/apple-touch-icon.png`} sizes="180x180" />
+  <script type="application/ld+json" set:html={JSON.stringify([org, ...ld])} />
+  <script is:inline>document.documentElement.classList.add('js'); if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="hdr" id="hdr">
+    <div class="hdr__in">
+      <a class="hdr__logo" href={u('')} aria-label="West Ontario Paving home"><Fragment set:html={logoSvg} /></a>
+      <nav class="hdr__nav" aria-label="Main">
+        {nav.map(([l, p]) => <a href={u(p)} aria-current={path === p ? 'page' : undefined}>{l}</a>)}
+      </nav>
+      <div class="hdr__act">
+        <a class="hdr__tel" href={`tel:${tollFree.tel}`}><span class="hdr__tel-l">Call toll free</span><span class="hdr__tel-n">{tollFree.num}</span></a>
+        <a class="hdr__call" href={`tel:${tollFree.tel}`} aria-label={`Call toll free ${tollFree.num}`}><Fragment set:html={phoneIco} /><span>Call</span></a>
+        <a class="btn btn--red mag" href={u('request-a-quote/')} aria-current={path === 'request-a-quote/' ? 'page' : undefined}><span class="s-long">Request a free quote</span><span class="s-short">Get a quote</span></a>
+        <button class="hdr__burger" aria-expanded="false" aria-controls="menu"><span class="sr">Open menu</span><i></i><i></i></button>
+      </div>
+    </div>
+    <div class="menu" id="menu" hidden>
+      <nav aria-label="Mobile">
+        <a href={u('')} aria-current={path === '' ? 'page' : undefined}>Home</a>
+        {nav.map(([l, p]) => <a href={u(p)} aria-current={path === p ? 'page' : undefined}>{l}</a>)}
+      </nav>
+      <a class="btn btn--red btn--lg" href={u('request-a-quote/')}><span>Request a free quote</span></a>
+      <div class="menu__foot">
+        {biz.phones.map((p) => <a href={`tel:${p.tel}`}><span>{p.label}</span>{p.num}</a>)}
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"><slot /></main>
+  <footer class="ftr">
+    <div class="ftr__cta wrap">
+      <div class="ftr__ph reveal"><Pic k={cta} sizes="(min-width: 900px) 36vw, 92vw" /></div>
+      <h2 class="ftr__big rise-lines">Start paving the way forward</h2>
+      <p class="ftr__sub fade">Get in touch today for a free quote on your next paving project.</p>
+      <div class="ftr__btns fade">
+        <a class="btn btn--red btn--lg mag" href={u('request-a-quote/')}><span>Request a free quote</span></a>
+        <a class="btn btn--line btn--lg mag" href={`tel:${tollFree.tel}`}><span>Call {tollFree.num}</span></a>
+      </div>
+    </div>
+    <div class="ftr__grid wrap">
+      <div class="ftr__brand">
+        <Fragment set:html={logoWhite} />
+        <p>Family-owned and operated since 1994, with over 30 years of paving experience across Ontario.</p>
+      </div>
+      <div>
+        <h2 class="ftr__h">Call</h2>
+        <ul class="ftr__list">{biz.phones.map((p) => <li><a href={`tel:${p.tel}`}><span>{p.label}</span>{p.num}</a></li>)}</ul>
+      </div>
+      <div>
+        <h2 class="ftr__h">Visit and write</h2>
+        <address>{biz.street}<br />{biz.city}, Ontario {biz.postal}</address>
+        <p><a href={`mailto:${biz.email}`}>{biz.email}</a></p>
+        <p>Office hours: {biz.hours}</p>
+      </div>
+      <div>
+        <h2 class="ftr__h">Pages</h2>
+        <ul class="ftr__list ftr__list--plain">
+          {nav.map(([l, p]) => <li><a href={u(p)}>{l}</a></li>)}
+          <li><a href={u('request-a-quote/')}>Request a free quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="ftr__h">Follow</h2>
+        <ul class="ftr__list ftr__list--plain">
+          <li><a href={biz.facebook} rel="noopener">Facebook</a></li>
+          <li><a href={biz.instagram} rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__legal wrap">
+      <span>© 2026 West Ontario Paving. All rights reserved.</span>
+      <span>Website preview by IT Rapid Support. Not the live site.</span>
+      <a href="#main">Back to top</a>
+    </div>
+  </footer>
+  <script>
+    import '../scripts/motion.js';
+  </script>
+</body>
+</html>

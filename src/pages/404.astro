@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { tollFree } from '../data/site.js';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Page not found | West Ontario Paving" description="The page you were looking for isn't here." path="404.html" cta="trucks2">
+  <section class="phero" style="min-height:0;grid-template-columns:1fr">
+    <div class="phero__txt">
+      <p class="phero__crumb"><a href={`${b}/`}>Home</a> / Page not found</p>
+      <h1 class="phero__h"><span class="ln">This page has moved</span><span class="ln">or no longer exists</span></h1>
+      <p class="phero__lede">The page you were looking for isn’t here. You can head back to the homepage, see our work or request a free quote.</p>
+      <div class="hero__btns">
+        <a class="btn btn--red btn--lg" href={`${b}/request-a-quote/`}><span>Request a free quote</span></a>
+        <a class="btn btn--line btn--lg" href={`tel:${tollFree.tel}`}><span>Call {tollFree.num}</span></a>
+      </div>
+      <p class="nf__links"><a class="tlink tlink--w" href={`${b}/`}>Back to home</a> <a class="tlink tlink--w" href={`${b}/residential-asphalt-paving/`}>Residential</a> <a class="tlink tlink--w" href={`${b}/commercial-asphalt-paving/`}>Commercial</a> <a class="tlink tlink--w" href={`${b}/gallery/`}>Our work</a></p>
+    </div>
+  </section>
+</Base>

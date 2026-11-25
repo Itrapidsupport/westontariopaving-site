@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Pic from '../components/Pic.astro';
+import { tollFree } from '../data/site.js';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+// v3: near-duplicates (row, roller2, paver, u0) dropped; columns balanced
+const gal = ['hero','house','lot','roller','curve','row2','tearup','smooth','edge','machine','truckcab','loader','skid2','trucks','truck','drive3','townroll','walk','u14','curve2','dump2','open','paver2','speedy','stairs'];
+---
+<Base title="Our work | West Ontario Paving" description="Photos from West Ontario Paving job sites: residential driveways, commercial parking lots, interlock and the crews and trucks that do the work." path="gallery/" preload="edge" preloadSizes="(min-width: 900px) 45vw, 100vw" cta="trucks2">
+  <section class="phero">
+    <div class="phero__txt">
+      <p class="phero__crumb in-rise" style="--d:.05s"><a href={`${b}/`}>Home</a> / Our work</p>
+      <h1 class="phero__h"><span class="ln"><span class="in-word" style="--d:0.10s">Our work</span></span></h1>
+      <p class="phero__lede in-rise" style="--d:.2s">Driveways, laneways, parking lots and walkways, photographed on our own job sites.</p>
+      <div class="hero__btns in-rise" style="--d:.25s">
+        <a class="btn btn--red btn--lg mag" href={`${b}/request-a-quote/`}><span>Request a free quote</span></a>
+        <a class="btn btn--line btn--lg mag" href={`tel:${tollFree.tel}`}><span>Call {tollFree.num}</span></a>
+      </div>
+    </div>
+    <div class="phero__ph in-wipe" style="--d:.1s"><div class="px-hero"><Pic k="edge" eager sizes="(min-width: 900px) 45vw, 100vw" pos="50% 60%" /></div></div>
+  </section>
+  <section class="gal wrap" aria-label="Project photos">
+    {gal.map((k) => <figure class="reveal"><Pic k={k} sizes="(min-width: 1100px) 31vw, (min-width: 480px) 46vw, 92vw" /></figure>)}
+  </section>
+</Base>

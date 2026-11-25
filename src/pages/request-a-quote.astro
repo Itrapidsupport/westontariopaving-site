@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Pic from '../components/Pic.astro';
+import { tollFree, biz } from '../data/site.js';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Request a free quote | West Ontario Paving" description="Request a free on-site consultation for residential or commercial paving. Call 905-840-4089, 416-886-7676 or toll free 1-844-467-2831." path="request-a-quote/" preload="trucks" preloadSizes="(min-width: 900px) 45vw, 100vw" cta="open">
+  <section class="phero">
+    <div class="phero__txt">
+      <p class="phero__crumb in-rise" style="--d:.05s"><a href={`${b}/`}>Home</a> / Request a free quote</p>
+      <h1 class="phero__h"><span class="ln"><span class="in-word" style="--d:0.10s">Request a</span></span><span class="ln"><span class="in-word" style="--d:0.18s">free quote</span></span></h1>
+      <p class="phero__lede in-rise" style="--d:.2s">We offer a free on-site consultation for residential and commercial projects. One of our sales representatives will contact you within 24 hours to book an&nbsp;appointment.</p>
+      <div class="hero__btns in-rise" style="--d:.25s">
+        <a class="btn btn--red btn--lg mag" href="#qf"><span>Start the form</span></a>
+        <a class="btn btn--line btn--lg mag" href={`tel:${tollFree.tel}`}><span>Call {tollFree.num}</span></a>
+      </div>
+    </div>
+    <div class="phero__ph in-wipe" style="--d:.1s"><div class="px-hero"><Pic k="trucks" eager sizes="(min-width: 900px) 45vw, 100vw" pos="50% 55%" /></div></div>
+  </section>
+  <section class="quote wrap">
+    <aside class="quote__aside">
+      <h2 class="sec-h rise-lines">Prefer to call?</h2>
+      <ul class="quote__phones fade">{biz.phones.map((p) => <li><a href={`tel:${p.tel}`}><span>{p.label}</span>{p.num}</a></li>)}</ul>
+      <p class="fade"><a href={`mailto:${biz.email}`}>{biz.email}</a><br />{biz.street}<br />{biz.city}, Ontario {biz.postal}<br />Office hours: {biz.hours}</p>
+      <figure class="quote__ph reveal"><div class="px"><Pic k="truck" sizes="(min-width: 900px) 34vw, 92vw" pos="50% 40%" /></div></figure>
+    </aside>
+    <form class="form" id="qf" action="/quote.php" method="post" novalidate aria-labelledby="qf-h">
+      <h2 id="qf-h" class="sr">Quote request form</h2>
+      <p class="form__req full"><i>*</i> Required</p>
+      <p class="form__sum full" role="status" aria-live="polite"></p>
+      <div class="field"><label for="f-name">Name <i>*</i></label><input id="f-name" name="Name" autocomplete="name" required aria-describedby="f-name-err" data-err="Enter your name" /><p class="field__err" id="f-name-err"></p></div>
+      <div class="field"><label for="f-email">Email address <i>*</i></label><input id="f-email" name="Email" type="email" autocomplete="email" required aria-describedby="f-email-err" data-err="Enter an email address like name@example.com" /><p class="field__err" id="f-email-err"></p></div>
+      <div class="field"><label for="f-phone">Phone <i>*</i></label><input id="f-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="f-phone-err" data-err="Enter your phone number" /><p class="field__err" id="f-phone-err"></p></div>
+      <div class="field"><label for="f-type">Type of work <i>*</i></label><select id="f-type" name="Type of work" required aria-describedby="f-type-err" data-err="Choose the type of work"><option value="">Choose one</option><option>Asphalt</option><option>Concrete</option><option>Interlocking</option><option>Other</option></select><p class="field__err" id="f-type-err"></p></div>
+      <div class="field full"><label for="f-addr">Address <small>(optional)</small></label><input id="f-addr" name="Address" autocomplete="street-address" /></div>
+      <div class="field"><label for="f-city">City <i>*</i></label><input id="f-city" name="City" autocomplete="address-level2" required aria-describedby="f-city-err" data-err="Enter your city" /><p class="field__err" id="f-city-err"></p></div>
+      <input type="hidden" name="Province" value="Ontario" />
+      <div class="field"><label for="f-int">Main intersection <small>(optional)</small></label><input id="f-int" name="Main intersection" /></div>
+      <div class="field full"><label for="f-time">Best time to call <small>(optional)</small></label><select id="f-time" name="Best time to call"><option value="">Any time</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+      <div class="field full"><label for="f-msg">Tell us about the project <small>(optional)</small></label><textarea id="f-msg" name="Message"></textarea></div>
+      <div class="full form__foot">
+        <button class="btn btn--red btn--lg mag" type="submit"><span>Send my quote request</span></button>
+        <p class="form__note">Your request goes straight to our office at {biz.email}. We reply within one business day.</p><div style="position:absolute;left:-9999px" aria-hidden="true"><label for="f-web">Leave this empty</label><input id="f-web" name="website" tabindex="-1" autocomplete="off" /></div>
+      </div>
+    </form>
+  </section>
+</Base>

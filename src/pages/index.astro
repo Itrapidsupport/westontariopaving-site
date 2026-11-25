@@ -1,0 +1,191 @@
+---
+import Base from '../layouts/Base.astro';
+import Pic from '../components/Pic.astro';
+import meta from '../data/images.json';
+import { tollFree, areas, reviews, services } from '../data/site.js';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+// v3: every Home photo appears once; rail = fewer, bigger, unused photos at their own proportions
+const rail = ['curve', 'machine', 'row2', 'dump2', 'edge', 'u14'];
+const ar = (k: string) => `aspect-ratio:${(meta as any)[k].w}/${(meta as any)[k].h}`;
+const [lead, ...rest] = reviews;
+const ld = [{
+  '@context': 'https://schema.org', '@type': 'ItemList', name: 'Paving services',
+  itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: s.name, description: s.text, provider: { '@id': `https://westontariopaving.com${b}/#business` }, areaServed: 'Ontario' } })),
+}];
+const stars = (n: number) => '★'.repeat(n) + '☆'.repeat(5 - n);
+---
+<Base title="West Ontario Paving | Toronto, GTA and Simcoe County paving" description="Family-owned paving contractor since 1994. Asphalt, concrete, interlock and paving repairs for homes and businesses. Free on-site consultations and honest quotes." ld={ld} preload="hero" preloadSizes="(min-width: 900px) 40vw, 100vw" cta="truckcab">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-h">
+    <canvas class="hero__grain" aria-hidden="true"></canvas>
+    <div class="hero__txt">
+      <p class="hero__kick in-rise" style="--d:.05s">Residential and commercial paving in Ontario</p>
+      <h1 id="hero-h" class="hero__h">
+        <span class="ln"><span class="in-word" style="--d:.1s">The solution</span></span>
+        <span class="ln"><span class="in-word" style="--d:.18s">to all your</span></span>
+        <span class="ln"><span class="in-word" style="--d:.26s">paving needs</span></span>
+      </h1>
+      <p class="hero__sub in-rise" style="--d:.2s">Paving driveways, patios, walkways, parking lots and more.</p>
+      <div class="hero__btns in-rise" style="--d:.25s">
+        <a class="btn btn--red btn--lg mag" href={`${b}/request-a-quote/`}><span>Request a free quote</span></a>
+        <a class="btn btn--line btn--lg mag" href={`tel:${tollFree.tel}`}><span>Call {tollFree.num}</span></a>
+      </div>
+      <ul class="hero__row in-rise" style="--d:.35s" aria-label="Why West Ontario Paving">
+        <li><span><b>Family-owned</b> since&nbsp;1994</span></li>
+        <li><span><b>Our own</b> crews and equipment</span></li>
+        <li><span><b>Free</b> on-site consultations</span></li>
+      </ul>
+    </div>
+    <div class="hero__media in-wipe" style="--d:.1s">
+      <div class="hero__ph"><div class="px-hero"><Pic k="hero" eager sizes="(min-width: 900px) 40vw, 100vw" pos="50% 30%" /></div></div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="stmt wrap" aria-labelledby="stmt-h">
+    <div class="stmt__head">
+      <div>
+        <p class="eyb">01 — Who we are</p>
+        <h2 id="stmt-h" class="sec-h rise-lines">Your reliable local paving contractor in Ontario</h2>
+      </div>
+      <p class="stmt__big brighten">We’re a family-owned and operated contracting business with a reputation as one of Ontario’s premier asphalt paving and interlocking&nbsp;companies.</p>
+    </div>
+    <div class="stmt__grid">
+      <figure class="stmt__ph reveal"><div class="px"><Pic k="paver2" sizes="(min-width: 900px) 56vw, 92vw" pos="50% 62%" /></div></figure>
+      <div class="stmt__copy fade">
+        <p>The right paving contractor to enhance the look of your home or revitalize your company’s parking lot can be hard to come by. With help from the team at West Ontario Paving, your home or business can receive reliable, premium paving, interlocking, concrete and jewel stone services.</p>
+        <p>With over 30 years of experience, our team of paving contractors has the ability to complete any job as quickly and efficiently as possible.</p>
+        <p>Contact us for a free consultation; we’ll gladly visit your property and provide you with a free, honest quote.</p>
+        <a class="tlink" href={`${b}/request-a-quote/`}>Request a free quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="svc" aria-labelledby="svc-h">
+    <div class="wrap svc__in">
+      <div class="svc__list">
+        <p class="eyb">02 — Services</p>
+        <h2 id="svc-h" class="sec-h rise-lines">From driveways to parking lots</h2>
+        <p class="svc__lede fade">From driveways, patios and laneways to parking lots, walkways and even tennis courts, our team has the expertise necessary to complete any paving job.</p>
+        <ol class="svc__rows">
+          {services.map((s, i) => (
+            <li class="svc__row" data-i={i}>
+              <h3>{s.name}</h3>
+              <p>{s.text}</p>
+              <div class="svc__mob"><Pic k={s.img} sizes="92vw" pos={s.img === 'stairs' ? '40% 60%' : '50% 55%'} /></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div class="svc__stage" aria-hidden="true">
+        <div class="svc__frame">
+          {services.map((s, i) => <div class={`svc__img${i === 0 ? ' on' : ''}`} data-i={i}><Pic k={s.img} sizes="(min-width: 1520px) 680px, 45vw" alt="" pos={s.img === 'stairs' ? '40% 60%' : '50% 55%'} /></div>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESIDENTIAL / COMMERCIAL -->
+  <section class="split" aria-label="Residential and commercial paving">
+    <a class="split__card split__card--black" href={`${b}/residential-asphalt-paving/`}>
+      <div class="split__ph reveal"><div class="px"><Pic k="drive3" sizes="(min-width: 900px) 50vw, 100vw" pos="50% 60%" /></div></div>
+      <div class="split__txt">
+        <h2 class="split__h rise-lines">Residential paving</h2>
+        <p class="fade">Whether you’re looking to enhance your home with a brand new driveway or you’re interested in getting your laneway paved, our team is here to help you with all your paving needs.</p>
+        <span class="tlink tlink--w">Residential asphalt paving</span>
+      </div>
+    </a>
+    <a class="split__card split__card--red" href={`${b}/commercial-asphalt-paving/`}>
+      <div class="split__ph reveal"><div class="px"><Pic k="lot" sizes="(min-width: 900px) 50vw, 100vw" pos="50% 62%" /></div></div>
+      <div class="split__txt">
+        <h2 class="split__h rise-lines">Commercial paving</h2>
+        <p class="fade">From putting down new parking lots to patching and resurfacing asphalt, our team is dedicated to helping commercial clients receive the best paving services possible.</p>
+        <span class="tlink tlink--w">Commercial asphalt paving</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- WORK RAIL -->
+  <section class="rail" aria-labelledby="rail-h">
+    <div class="rail__pin">
+      <div class="rail__head wrap">
+        <div>
+          <p class="eyb eyb--w">03 — Gallery</p>
+          <h2 id="rail-h" class="sec-h sec-h--w rise-lines">Our work</h2>
+        </div>
+        <a class="tlink tlink--w fade" href={`${b}/gallery/`}>See the full gallery</a>
+      </div>
+      <div class="rail__track" tabindex="0" role="region" aria-label="Photos of our work, scrolls sideways">
+        {rail.map((k) => <figure class="rail__item" style={ar(k)}><Pic k={k} sizes="(min-width: 900px) 60vw, 84vw" /></figure>)}
+      </div>
+      <div class="rail__bar wrap" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <!-- CREWS + EQUIPMENT -->
+  <section class="crew wrap" aria-labelledby="crew-h">
+    <div class="crew__txt">
+      <p class="eyb">04 — Crews</p>
+      <h2 id="crew-h" class="sec-h rise-lines">Our own crews and equipment</h2>
+      <p class="fade">As a family-owned company, we send our own experienced crews to every job. We never subcontract your project to whoever is available, so the team you book is the team that shows up.</p>
+      <p class="fade">We bring our own trucks, pavers and rollers to every job.</p>
+    </div>
+    <div class="crew__col">
+      <figure class="crew__b reveal"><div class="px" data-speed="5"><Pic k="trucks" sizes="(min-width: 1180px) 50vw, (min-width: 900px) 46vw, 92vw" pos="50% 55%" /></div></figure>
+      <figure class="crew__a reveal"><div class="px" data-speed="-4"><Pic k="truck" sizes="(min-width: 900px) 30vw, 54vw" pos="50% 40%" /></div></figure>
+      <figure class="crew__c reveal"><div class="px" data-speed="-6"><Pic k="loader" sizes="(min-width: 900px) 22vw, 40vw" /></div></figure>
+    </div>
+  </section>
+
+  <!-- REVIEWS: editorial column -->
+  <section class="rev" aria-labelledby="rev-h">
+    <div class="rev__ph reveal"><div class="px"><Pic k="smooth" sizes="(min-width: 1700px) 50vw, (min-width: 900px) 43vw, 100vw" pos="50% 45%" /></div></div>
+    <div class="rev__body">
+      <p class="eyb">05 — Client feedback</p>
+      <h2 id="rev-h" class="sr">Client feedback</h2>
+      <figure class="rev__lead">
+        <blockquote><p class="fade">{lead.text}</p></blockquote>
+        <figcaption><b>{lead.name}</b> {lead.place} <span class="rev__stars"><span aria-hidden="true">{stars(lead.stars)}</span><span class="sr">{lead.stars} out of 5 stars</span></span></figcaption>
+      </figure>
+      <div class="rev__list">
+        {rest.map((r) => (
+          <figure class="fade">
+            <blockquote><p>{r.text}</p></blockquote>
+            <figcaption><b>{r.name}</b> {r.place} <span class="rev__stars"><span aria-hidden="true">{stars(r.stars)}</span><span class="sr">{r.stars} out of 5 stars</span></span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how wrap" aria-labelledby="how-h">
+    <p class="eyb">06 — How it works</p>
+    <h2 id="how-h" class="how__line"><span>Get in touch</span><i aria-hidden="true">→</i><span>Get a quote</span><i aria-hidden="true">→</i><span>Get started</span></h2>
+    <ol class="how__list">
+      <li class="fade"><b>Get in touch</b>Contact our team of paving specialists and let us know what you’re looking for.</li>
+      <li class="fade"><b>Get a quote</b>Our team will give you a fair and commitment-free quote for your paving project.</li>
+      <li class="fade"><b>Get started</b>If you decide to work with us, we’ll book you in and get started on your paving as soon as possible.</li>
+    </ol>
+  </section>
+
+  <!-- AREAS -->
+  <section class="areas" aria-labelledby="areas-h">
+    <div class="areas__mq" aria-hidden="true">
+      <div class="mq"><div class="mq__t">{[...areas.gta, ...areas.gta].map((a) => <span>{a}</span>)}</div></div>
+    </div>
+    <div class="wrap areas__in">
+      <div>
+        <p class="eyb eyb--w">07 — Areas</p>
+        <h2 id="areas-h" class="sec-h sec-h--w rise-lines">Areas we serve</h2>
+        <div class="areas__cols">
+          <div class="fade"><h3>GTA and surrounding area</h3><ul>{areas.gta.map((a) => <li class={a === 'Woodbridge' ? 'hq' : undefined}>{a}</li>)}</ul></div>
+          <div class="fade"><h3>Simcoe County and Georgian Bay</h3><ul>{areas.simcoe.map((a) => <li>{a}</li>)}</ul></div>
+        </div>
+      </div>
+      <figure class="areas__ph reveal"><div class="px"><Pic k="open" sizes="(min-width: 1520px) 680px, (min-width: 900px) 46vw, 92vw" pos="50% 70%" /></div></figure>
+    </div>
+  </section>
+</Base>

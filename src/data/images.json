@@ -1,0 +1,548 @@
+{
+ "hero": {
+  "w": 9000,
+  "h": 12000,
+  "alt": "West Ontario Paving crew laying fresh asphalt on a commercial lot",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_4953-scaled.jpg",
+  "master": true,
+  "grade": [
+   1.055,
+   1.007,
+   0.947
+  ]
+ },
+ "speedy": {
+  "w": 9000,
+  "h": 12000,
+  "alt": "Freshly paved commercial parking lot",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_9815.jpg",
+  "master": true,
+  "grade": [
+   1.066,
+   1.007,
+   0.941
+  ]
+ },
+ "house": {
+  "w": 9000,
+  "h": 12000,
+  "alt": "New asphalt driveway in front of a two-car garage",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_9804.jpg",
+  "master": true,
+  "grade": [
+   1.025,
+   0.996,
+   0.979
+  ]
+ },
+ "roller": {
+  "w": 9000,
+  "h": 12000,
+  "alt": "Asphalt freshly paved in a commercial lot",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_9724.jpg",
+  "master": true,
+  "grade": [
+   1.096,
+   1.005,
+   0.925
+  ]
+ },
+ "lot": {
+  "w": 9000,
+  "h": 12000,
+  "alt": "Finished commercial parking lot",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_9723.jpg",
+  "master": true,
+  "grade": [
+   1.096,
+   1.007,
+   0.921
+  ]
+ },
+ "curve": {
+  "w": 12000,
+  "h": 8400,
+  "alt": "Freshly paved asphalt driveway",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "asphalt-driveway-repaved-500.jpg",
+  "master": true,
+  "grade": [
+   1.005,
+   0.985,
+   1.012
+  ]
+ },
+ "row2": {
+  "w": 12000,
+  "h": 9651,
+  "alt": "New asphalt driveway in front of townhomes",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "new-asphalt-driveway-1.jpg",
+  "master": true,
+  "grade": [
+   1.011,
+   1.007,
+   0.983
+  ]
+ },
+ "tearup": {
+  "w": 12000,
+  "h": 9843,
+  "alt": "Removing an old walkway before new work",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "tearing-up-old-walkway.jpg",
+  "master": true,
+  "grade": [
+   1.019,
+   1.006,
+   0.976
+  ]
+ },
+ "smooth": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Smoothing a driveway freshly paved with asphalt",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "unnamed-12-1.jpg",
+  "master": true,
+  "grade": [
+   0.998,
+   0.97,
+   1.042
+  ]
+ },
+ "edge": {
+  "w": 12000,
+  "h": 6496,
+  "alt": "Skid steer spreading gravel base",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_9262.jpg",
+  "master": true,
+  "grade": [
+   0.972,
+   0.979,
+   1.064
+  ]
+ },
+ "machine": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Paving equipment in the yard",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_7191.jpg",
+  "master": true,
+  "grade": [
+   0.944,
+   0.989,
+   1.064
+  ]
+ },
+ "truckcab": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "West Ontario Paving Ltd. dump truck",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_1980.jpg",
+  "master": true,
+  "grade": [
+   1.084,
+   1.005,
+   0.932
+  ]
+ },
+ "loader": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Loader filling a dump truck",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_1978.jpg",
+  "master": true,
+  "grade": [
+   1.046,
+   0.999,
+   0.959
+  ]
+ },
+ "skid2": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Skid steer breaking up old concrete",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "IMG_1976.jpg",
+  "master": true,
+  "grade": [
+   0.972,
+   1.005,
+   1.032
+  ]
+ },
+ "trucks": {
+  "w": 12000,
+  "h": 8992,
+  "alt": "Two West Ontario Paving dump trucks on site",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "f964a98d-2567-438b-a437-7733bb9e1a6c.jpg",
+  "master": true,
+  "grade": [
+   0.989,
+   1,
+   1.014
+  ]
+ },
+ "trucks2": {
+  "w": 12000,
+  "h": 8992,
+  "alt": "Dump trucks at a job site",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "14b408e6-626e-428f-af58-534952493fb5.jpg",
+  "master": true,
+  "grade": [
+   0.996,
+   1.002,
+   1.004
+  ]
+ },
+ "truck": {
+  "w": 9008,
+  "h": 12000,
+  "alt": "West Ontario Paving Ltd. truck",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "West-Ontario-Paving-truck.jpg",
+  "master": true,
+  "grade": [
+   1.096,
+   1,
+   0.913
+  ]
+ },
+ "drive3": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Asphalt paved driveway with concrete curb",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "asphalt-paved-driveway.jpg",
+  "master": true,
+  "grade": [
+   1.007,
+   0.983,
+   1.012
+  ]
+ },
+ "townroll": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "New asphalt driveway in front of townhomes",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "new-asphalt-driveway.jpg",
+  "master": true,
+  "grade": [
+   1.018,
+   1.006,
+   0.976
+  ]
+ },
+ "walk": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Commercial walkway work",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "unnamed-15.jpg",
+  "master": true,
+  "grade": [
+   0.978,
+   0.997,
+   1.032
+  ]
+ },
+ "u14": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Commercial frontage paving",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "unnamed-14.jpg",
+  "master": true,
+  "grade": [
+   1.012,
+   1.008,
+   0.981
+  ]
+ },
+ "curve2": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Freshly paved driveway using asphalt",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "unnamed-13.jpg",
+  "master": true,
+  "grade": [
+   1.008,
+   0.992,
+   1.002
+  ]
+ },
+ "dump2": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Dump truck on a new lot",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "unnamed-9.jpg",
+  "master": true,
+  "grade": [
+   0.996,
+   1,
+   1.006
+  ]
+ },
+ "open": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Long asphalt drive",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "unnamed-8.jpg",
+  "master": true,
+  "grade": [
+   0.998,
+   0.998,
+   1.005
+  ]
+ },
+ "paver2": {
+  "w": 8992,
+  "h": 12000,
+  "alt": "Asphalt paver beside a home",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "unnamed-5.jpg",
+  "master": true,
+  "grade": [
+   1.009,
+   0.999,
+   0.992
+  ]
+ },
+ "stairs": {
+  "w": 12000,
+  "h": 8992,
+  "alt": "Stone walkway steps",
+  "ws": [
+   480,
+   900,
+   1400,
+   2000,
+   2800,
+   3840,
+   5120
+  ],
+  "file": "stone-walkway-stairs.jpg",
+  "master": true,
+  "grade": [
+   1.007,
+   0.998,
+   0.996
+  ]
+ }
+}

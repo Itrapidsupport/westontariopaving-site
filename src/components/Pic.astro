@@ -1,0 +1,18 @@
+---
+import meta from '../data/images.json';
+interface Props { k: string; sizes?: string; eager?: boolean; cls?: string; alt?: string; pos?: string; style?: string }
+const { k, sizes = '(min-width: 900px) 50vw, 100vw', eager = false, cls = '', alt, pos, style } = Astro.props;
+const m = (meta as any)[k];
+if (!m) throw new Error('missing image ' + k);
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+// v3: AVIF (<= 2800w) only for standard-density screens; retina/high-DPR screens get WebP up to 5120w.
+const avifWs = m.ws.filter((w: number) => w <= 2800);
+const set = (ws: number[], ext: string) => ws.map((w) => `${b}/img/${k}-${w}.${ext} ${w}w`).join(', ');
+const fallback = `${b}/img/${k}-${m.ws.find((w: number) => w >= 900) ?? m.ws[m.ws.length - 1]}.webp`;
+const st = [pos ? `object-position:${pos}` : '', style ?? ''].filter(Boolean).join(';') || undefined;
+---
+<picture class={cls || undefined}>
+  <source type="image/avif" media="(max-resolution: 1.49dppx)" srcset={set(avifWs, 'avif')} sizes={sizes} />
+  <source type="image/webp" srcset={set(m.ws, 'webp')} sizes={sizes} />
+  <img src={fallback} width={m.w} height={m.h} alt={alt ?? m.alt} loading={eager ? 'eager' : 'lazy'} decoding={eager ? 'sync' : 'async'} fetchpriority={eager ? 'high' : 'auto'} style={st} />
+</picture>

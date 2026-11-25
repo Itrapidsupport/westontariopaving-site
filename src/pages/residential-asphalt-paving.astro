@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Pic from '../components/Pic.astro';
+import { tollFree } from '../data/site.js';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Residential asphalt paving | West Ontario Paving" description="Durable, affordable residential driveways, sidewalks, pathways, private tennis courts and parking lots from a family-owned paving contractor with over 30 years of experience." path="residential-asphalt-paving/" preload="house" preloadSizes="(min-width: 900px) 45vw, 100vw" cta="curve" ld={[{ '@context': 'https://schema.org', '@type': 'Service', name: 'Residential asphalt paving', serviceType: 'Asphalt paving', provider: { '@type': 'LocalBusiness', name: 'West Ontario Paving' }, areaServed: 'Ontario' }]}>
+  <section class="phero">
+    <div class="phero__txt">
+      <p class="phero__crumb in-rise" style="--d:.05s"><a href={`${b}/`}>Home</a> / Residential paving</p>
+      <h1 class="phero__h"><span class="ln"><span class="in-word" style="--d:0.10s">Residential</span></span><span class="ln"><span class="in-word" style="--d:0.18s">asphalt paving</span></span></h1>
+      <p class="phero__lede in-rise" style="--d:.2s">Residential paving built to last. We install strong, cost-effective, eco-friendly driveways, backed by over 30 years of experience.</p>
+      <div class="hero__btns in-rise" style="--d:.25s">
+        <a class="btn btn--red btn--lg mag" href={`${b}/request-a-quote/`}><span>Request a free quote</span></a>
+        <a class="btn btn--line btn--lg mag" href={`tel:${tollFree.tel}`}><span>Call {tollFree.num}</span></a>
+      </div>
+    </div>
+    <div class="phero__ph in-wipe" style="--d:.1s"><div class="px-hero"><Pic k="house" eager sizes="(min-width: 900px) 45vw, 100vw" pos="50% 62%" /></div></div>
+  </section>
+  <section class="prose wrap">
+    <div class="prose__copy">
+      <p class="lead brighten">Looking for a durable, affordable and sustainable driveway?</p>
+      <p class="fade">Whether it’s maintenance or a complete new driveway, our team handles it. A properly done driveway makes your home look newer and adds to its value.</p>
+      <p class="fade">If you’re struggling with any paving-related issue, give us a call and we’ll help you solve it. Our residential paving services are designed around your needs.</p>
+      <p class="fade">Get in touch today for a free quote on a beautiful, sustainable driveway that will last for years to come.</p>
+      <a class="tlink fade" href={`${b}/request-a-quote/`}>Request a free quote</a>
+    </div>
+    <div class="prose__ph">
+      <figure class="reveal"><div class="px"><Pic k="curve2" eager sizes="(min-width: 1180px) 24vw, (min-width: 900px) 46vw, 46vw" /></div></figure>
+      <figure class="reveal"><div class="px"><Pic k="townroll" eager sizes="(min-width: 1180px) 24vw, (min-width: 900px) 46vw, 46vw" pos="50% 55%" /></div></figure>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap band__in">
+      <div>
+        <h2 class="rise-lines">Our residential paving services include</h2>
+        <figure class="reveal" style="margin-top:36px;aspect-ratio:4/3"><div class="px"><Pic k="drive3" sizes="(min-width: 900px) 44vw, 92vw" pos="50% 60%" /></div></figure>
+      </div>
+      <ul class="fade">
+        <li>Private driveways</li><li>Sidewalks</li><li>Pathways</li><li>Private tennis courts</li><li>Private parking lots</li>
+      </ul>
+    </div>
+  </section>
+</Base>
