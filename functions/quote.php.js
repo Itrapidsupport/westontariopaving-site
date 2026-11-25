@@ -2,6 +2,7 @@
 // Replaces the HostPapa quote.php: same fields, honeypot, validation and thank-you / error pages.
 // Mail goes out through Microsoft Graph (app-only sendMail) from office@ to office@, Reply-To = customer.
 // Secrets (Pages > Settings > Variables, encrypted): GRAPH_TENANT_ID, GRAPH_CLIENT_ID, GRAPH_CLIENT_SECRET.
+// Graph app: dedicated 'West Ontario Paving Website Form' (Mail.Send application permission only; Exchange ApplicationAccessPolicy limits it to office@).
 import { tollFree } from '../src/data/site.js';
 
 const TO = 'office@westontariopaving.com';
