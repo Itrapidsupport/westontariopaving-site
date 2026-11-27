@@ -1,11 +1,11 @@
 // West Ontario Paving quote form handler (Cloudflare Pages Function, ITRS 2026-11-25).
 // Replaces the HostPapa quote.php: same fields, honeypot, validation and thank-you / error pages.
-// Mail goes out through Microsoft Graph (app-only sendMail) from office@ to office@, Reply-To = customer.
+// Mail goes out through Microsoft Graph (app-only sendMail) from office@ to office@ + gaetano@, Reply-To = customer.
 // Secrets (Pages > Settings > Variables, encrypted): GRAPH_TENANT_ID, GRAPH_CLIENT_ID, GRAPH_CLIENT_SECRET.
 // Graph app: dedicated 'West Ontario Paving Website Form' (Mail.Send application permission only; Exchange ApplicationAccessPolicy limits it to office@).
 import { tollFree } from '../src/data/site.js';
 
-const TO = 'office@westontariopaving.com';
+const TO = ['office@westontariopaving.com', 'gaetano@westontariopaving.com'];
 const SENDER = 'office@westontariopaving.com';
 const OFFICE_EMAIL = 'office@westontariopaving.com';
 
@@ -119,7 +119,7 @@ export async function onRequest({ request, env }) {
     subject,
     body: { contentType: 'Text', content: lines.join('\n') },
     from: { emailAddress: { address: SENDER, name: 'West Ontario Paving website' } },
-    toRecipients: [{ emailAddress: { address: TO } }],
+    toRecipients: TO.map((address) => ({ emailAddress: { address } })),
     replyTo: [{ emailAddress: { address: email, name: name.slice(0, 60) } }],
     internetMessageHeaders: [{ name: 'X-WOP-Form', value: 'quote' }],
   };
